@@ -28,11 +28,19 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-dvh flex-col bg-background">
+          <div className="relative flex min-h-dvh flex-col">
+            {/* Visual background */}
+            <div
+              className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"
+              style={{
+                background: 'linear-gradient(135deg, #a076f3 0%, #48bfe3 100%)',
+              }}
+            ></div>
+
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />

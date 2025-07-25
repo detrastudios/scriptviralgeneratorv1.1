@@ -77,18 +77,19 @@ const generateViralScriptPrompt = ai.definePrompt({
   name: 'generateViralScriptPrompt',
   input: {schema: GenerateViralScriptInputSchema},
   output: {schema: GenerateViralScriptOutputSchema},
-  prompt: `You are an expert marketing script generator for social media.
+  prompt: `You are an expert marketing script generator for social media. Your primary goal is to create scripts that are precisely tailored to the user's specified video duration.
 
 You will generate {{{outputCount}}} different script options based on the product link and the following preferences:
 
 Product Link: {{{productLink}}}
 Language Style: {{{languageStyle}}}
-Script Length: Target a video duration of approximately {{{scriptLength}}} seconds.
 Hook Type: {{{hookType}}}
 
-Each script option should include relevant and powerful hashtags.  The script and hashtags should be tailored to the Indonesian market.
+**Crucial Instruction:** The script's content MUST be readable within the specified video duration. The target video duration is exactly **{{{scriptLength}}} seconds**. Adjust the word count and pacing of the script to strictly meet this time limit. Do not generate a script that is too long or too short for a {{{scriptLength}}}-second video.
 
-Ensure that the output provides exactly {{{outputCount}}} distinct script options, each with its own unique script and set of hashtags. Be creative and persuasive.
+Each script option must include relevant and powerful hashtags. All content must be tailored to the Indonesian market.
+
+Ensure that the output provides exactly {{{outputCount}}} distinct script options, each with its own unique script and set of hashtags. Be creative and persuasive while strictly adhering to the time constraint.
 `,
 });
 

@@ -16,7 +16,7 @@
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
+    --accent: 195 83% 58%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -27,24 +27,24 @@
   }
 
   .dark {
-    --background: 240 10% 10%;
+    --background: 240 10% 3.9%;
     --foreground: 210 40% 98%;
-    --card: 240 10% 13%;
+    --card: 240 10% 10%;
     --card-foreground: 210 40% 98%;
-    --popover: 240 10% 10%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 210 40% 98%;
     --primary: 259 82% 70%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 240 10% 20%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 240 10% 20%;
+    --muted: 240 3.7% 15.9%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 240 10% 20%;
+    --accent: 195 83% 58%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 10% 25%;
-    --input: 240 10% 20%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
     --ring: 259 82% 70%;
   }
 }
@@ -59,25 +59,16 @@
 }
 
 @layer utilities {
-  @keyframes twinkle {
+  @keyframes pulse-star {
     0%, 100% {
-      transform: scale(0.95);
-      opacity: 0.8;
+      transform: scale(1);
     }
     50% {
-      transform: scale(1.05);
-      opacity: 1;
+      transform: scale(1.2);
     }
   }
 
-  @keyframes sparkle {
-    0%, 100% {
-      transform: scale(0.8) rotate(-10deg);
-      opacity: 0.5;
-    }
-    50% {
-      transform: scale(1.2) rotate(10deg);
-      opacity: 1;
-    }
+  .animate-pulse-star {
+    animation: pulse-star 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }

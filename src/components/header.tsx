@@ -9,7 +9,7 @@ export function Header() {
         <div className="mr-4 flex items-center">
           <a href="/" className="mr-6 flex items-center space-x-2">
             <div>
-              <div className="font-bold text-[36px] tracking-[0.2em]">VISIG</div>
+              <div className="font-bold text-[36px] tracking-[0.2em] leading-none">VISIG</div>
               <div className="text-xs text-muted-foreground">viral script generator</div>
             </div>
           </a>

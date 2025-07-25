@@ -146,13 +146,13 @@ Hashtag: ${option.hashtags || "-"}`;
   return (
     <div className="space-y-8">
       <Card>
-        <CardHeader className="text-center">
+        <CardHeader className="text-center p-8">
           <CardTitle className="text-3xl font-bold">Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
-          <CardDescription>
+          <CardDescription className="text-base">
             Masukkan link produk dan preferensi Anda untuk membuat konten viral.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-8 pt-0">
           <Form {...form}>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <FormField
@@ -340,7 +340,7 @@ Hashtag: ${option.hashtags || "-"}`;
             {results.scriptOptions.map((option, index) => (
               <Card key={index} className="flex flex-col">
                 <CardHeader>
-                  <CardTitle>Opsi Script {index + 1}</CardTitle>
+                  <CardTitle className="text-xl">Opsi Script {index + 1}</CardTitle>
                   <CardDescription>
                     Durasi: {option.durasi || "-"} detik
                   </CardDescription>

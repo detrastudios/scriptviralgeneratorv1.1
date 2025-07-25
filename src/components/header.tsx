@@ -5,7 +5,7 @@ import { Sparkles } from 'lucide-react';
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 w-full bg-background">
       <div className="container flex h-20 max-w-screen-2xl items-center">
         <a href="/" className="mr-6 flex items-center space-x-3">
           <div className="bg-primary/20 p-2 rounded-lg">

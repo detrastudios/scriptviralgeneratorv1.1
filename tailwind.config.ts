@@ -63,6 +63,9 @@ export default {
           '5': 'hsl(var(--chart-5))',
         },
       },
+      boxShadow: {
+        glow: '0 0 25px hsl(var(--primary) / 0.25)',
+      },
       fill: ({ theme }) => ({
         primary: theme('colors.primary.DEFAULT'),
         'primary-foreground': theme('colors.primary.foreground'),

@@ -41,7 +41,7 @@ import { Slider } from './ui/slider';
 
 const FormSchema = z.object({
   productLink: z.string().url({ message: 'Harap masukkan URL produk yang valid.' }).min(1, { message: 'Link produk tidak boleh kosong.' }),
-  languageStyle: z.enum(['persuasif', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling', 'storytelling relate', 'storytelling halus'], {
+  languageStyle: z.enum(['persuasif', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling', 'storytelling relate', 'storytelling halus', 'problem-agitation-solution'], {
     required_error: "Gaya bahasa harus dipilih."
   }),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing'], {
@@ -141,18 +141,19 @@ export function ScriptGenerator() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
                           <SelectItem value="how-to">How-To / Tips</SelectItem>
-                          <SelectItem value="listicle">Listicle</SelectItem>
                           <SelectItem value="santai">Santai</SelectItem>
+                          <SelectItem value="listicle">Listicle</SelectItem>
                           <SelectItem value="edukatif">Edukatif</SelectItem>
                           <SelectItem value="persuasif">Persuasif</SelectItem>
                           <SelectItem value="profesional">Profesional</SelectItem>
-                          <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
-                          <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
                           <SelectItem value="storyselling">Storyselling</SelectItem>
+                          <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
+                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
                           <SelectItem value="storytelling relate">Storytelling relate</SelectItem>
                           <SelectItem value="storytelling halus">Storytelling halus</SelectItem>
+                          <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
+                          <SelectItem value="problem-agitation-solution">Problem – Agitation – Solution</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -176,14 +177,14 @@ export function ScriptGenerator() {
                           </FormControl>
                           <SelectContent>
                             <SelectItem value="tidak ada">Tidak Ada</SelectItem>
-                            <SelectItem value="kontroversial">Kontroversial</SelectItem>
-                            <SelectItem value="pertanyaan retoris">Pertanyaan Retoris</SelectItem>
-                            <SelectItem value="kutipan relatable">Kutipan Relatable</SelectItem>
-                            <SelectItem value="fakta mengejutkan">Fakta Mengejutkan</SelectItem>
-                            <SelectItem value="masalah dan solusi">Masalah dan Solusi</SelectItem>
-                            <SelectItem value="before after">Before After</SelectItem>
                             <SelectItem value="X dibanding Y">X dibanding Y</SelectItem>
+                            <SelectItem value="before after">Before After</SelectItem>
+                            <SelectItem value="kontroversial">Kontroversial</SelectItem>
                             <SelectItem value="testimoni/review">Testimoni/Review</SelectItem>
+                            <SelectItem value="kutipan relatable">Kutipan Relatable</SelectItem>
+                            <SelectItem value="masalah dan solusi">Masalah dan Solusi</SelectItem>
+                            <SelectItem value="fakta mengejutkan">Fakta Mengejutkan</SelectItem>
+                            <SelectItem value="pertanyaan retoris">Pertanyaan Retoris</SelectItem>
                             <SelectItem value="first impression/unboxing">First Impression/Unboxing</SelectItem>
                           </SelectContent>
                         </Select>

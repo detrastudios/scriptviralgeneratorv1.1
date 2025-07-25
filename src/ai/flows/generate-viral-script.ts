@@ -31,7 +31,8 @@ const GenerateViralScriptInputSchema = z.object({
     'curhatan',
     'storyselling',
     'storytelling relate',
-    'storytelling halus'
+    'storytelling halus',
+    'problem-agitation-solution',
   ]).describe('The desired language style for the script.'),
   scriptLength: z.number().describe('The desired script length in seconds (0-60).'),
   hookType: z

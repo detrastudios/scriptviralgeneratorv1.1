@@ -10,7 +10,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormDescription,
   FormMessage,
 } from "@/components/ui/form";
 import {
@@ -148,7 +147,7 @@ Hashtag: ${option.hashtags || "-"}`;
       <Card>
         <CardHeader className="text-center p-8">
           <CardTitle className="text-3xl font-bold">Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
-          <CardDescription className="text-base">
+          <CardDescription className="text-base text-muted-foreground/80">
             Masukkan link produk dan preferensi Anda untuk membuat konten viral.
           </CardDescription>
         </CardHeader>

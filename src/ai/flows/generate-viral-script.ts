@@ -48,6 +48,7 @@ const GenerateViralScriptInputSchema = z.object({
       'first impression/unboxing',
     ])
     .describe('The desired hook type for the script.'),
+  outputCount: z.number().min(1).max(15).describe('The number of script options to generate.'),
 });
 
 export type GenerateViralScriptInput = z.infer<typeof GenerateViralScriptInputSchema>;
@@ -59,7 +60,7 @@ const GenerateViralScriptOutputSchema = z.object({
       script: z.string().describe('A generated marketing script option.'),
       hashtags: z.string().describe('Relevant and powerful hashtags for the script.'),
     })
-  ).length(6).describe('Six different script options with hashtags.'),
+  ).describe('A variable number of script options with hashtags, based on outputCount.'),
 });
 
 export type GenerateViralScriptOutput = z.infer<typeof GenerateViralScriptOutputSchema>;
@@ -78,7 +79,7 @@ const generateViralScriptPrompt = ai.definePrompt({
   output: {schema: GenerateViralScriptOutputSchema},
   prompt: `You are an expert marketing script generator for social media.
 
-You will generate 6 different script options based on the product link and the following preferences:
+You will generate {{{outputCount}}} different script options based on the product link and the following preferences:
 
 Product Link: {{{productLink}}}
 Language Style: {{{languageStyle}}}
@@ -87,7 +88,7 @@ Hook Type: {{{hookType}}}
 
 Each script option should include relevant and powerful hashtags.  The script and hashtags should be tailored to the Indonesian market.
 
-Ensure that the output provides six distinct script options, each with its own unique script and set of hashtags. Be creative and persuasive.
+Ensure that the output provides exactly {{{outputCount}}} distinct script options, each with its own unique script and set of hashtags. Be creative and persuasive.
 `,
 });
 

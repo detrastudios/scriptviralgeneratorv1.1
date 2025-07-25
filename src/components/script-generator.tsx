@@ -44,10 +44,11 @@ const FormSchema = z.object({
   languageStyle: z.enum(['persuasif', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling', 'storytelling relate', 'storytelling halus'], {
     required_error: "Gaya bahasa harus dipilih."
   }),
-  scriptLength: z.number().min(0).max(60),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing'], {
     required_error: "Jenis hook harus dipilih."
   }),
+  scriptLength: z.number().min(0).max(60),
+  outputCount: z.number().min(1).max(15),
 });
 
 export function ScriptGenerator() {
@@ -60,10 +61,12 @@ export function ScriptGenerator() {
     defaultValues: {
       productLink: '',
       scriptLength: 30,
+      outputCount: 6,
     },
   });
 
   const scriptLengthValue = form.watch('scriptLength');
+  const outputCountValue = form.watch('outputCount');
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     setIsLoading(true);
@@ -121,7 +124,7 @@ export function ScriptGenerator() {
                 )}
               />
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="languageStyle"
@@ -138,16 +141,16 @@ export function ScriptGenerator() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                           <SelectItem value="santai">Santai</SelectItem>
-                          <SelectItem value="edukatif">Edukatif</SelectItem>
+                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
                           <SelectItem value="how-to">How-To / Tips</SelectItem>
                           <SelectItem value="listicle">Listicle</SelectItem>
+                          <SelectItem value="santai">Santai</SelectItem>
+                          <SelectItem value="edukatif">Edukatif</SelectItem>
                           <SelectItem value="persuasif">Persuasif</SelectItem>
                           <SelectItem value="profesional">Profesional</SelectItem>
+                          <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
                           <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
                           <SelectItem value="storyselling">Storyselling</SelectItem>
-                          <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
-                           <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
                           <SelectItem value="storytelling relate">Storytelling relate</SelectItem>
                           <SelectItem value="storytelling halus">Storytelling halus</SelectItem>
                         </SelectContent>
@@ -188,28 +191,53 @@ export function ScriptGenerator() {
                     </FormItem>
                   )}
                 />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
-                  control={form.control}
-                  name="scriptLength"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Durasi (detik)</FormLabel>
-                       <FormControl>
-                        <Slider
-                          min={0}
-                          max={60}
-                          step={1}
-                          defaultValue={[field.value]}
-                          onValueChange={(value) => field.onChange(value[0])}
-                        />
-                      </FormControl>
-                      <FormDescription>
-                        Durasi video: {scriptLengthValue} detik.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                    control={form.control}
+                    name="scriptLength"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Durasi (detik)</FormLabel>
+                        <FormControl>
+                          <Slider
+                            min={0}
+                            max={60}
+                            step={1}
+                            defaultValue={[field.value]}
+                            onValueChange={(value) => field.onChange(value[0])}
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          Durasi video: {scriptLengthValue} detik.
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="outputCount"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Jumlah Hasil</FormLabel>
+                        <FormControl>
+                          <Slider
+                            min={1}
+                            max={15}
+                            step={1}
+                            defaultValue={[field.value]}
+                            onValueChange={(value) => field.onChange(value[0])}
+                          />
+                        </FormControl>
+                        <FormDescription>
+                          Jumlah output: {outputCountValue} script.
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
               </div>
 
               <Button type="submit" disabled={isLoading} className="w-full md:w-auto bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -229,7 +257,7 @@ export function ScriptGenerator() {
       
       {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[...Array(6)].map((_, i) => (
+          {[...Array(outputCountValue)].map((_, i) => (
             <Card key={i}>
               <CardHeader>
                 <Skeleton className="h-6 w-32" />

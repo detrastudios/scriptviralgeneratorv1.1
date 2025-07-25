@@ -144,15 +144,15 @@ export function ScriptGenerator() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
+                          <SelectItem value="santai">Santai</SelectItem>
                           <SelectItem value="how-to">How-To / Tips</SelectItem>
                           <SelectItem value="listicle">Listicle</SelectItem>
-                          <SelectItem value="santai">Santai</SelectItem>
                           <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
                           <SelectItem value="edukatif">Edukatif</SelectItem>
                           <SelectItem value="persuasif">Persuasif</SelectItem>
-                          <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
                           <SelectItem value="profesional">Profesional</SelectItem>
+                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
+                          <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
                           <SelectItem value="storyselling">Storyselling</SelectItem>
                           <SelectItem value="storytelling halus">Storytelling halus</SelectItem>
                           <SelectItem value="storytelling relate">Storytelling relate</SelectItem>

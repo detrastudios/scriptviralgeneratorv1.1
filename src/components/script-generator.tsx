@@ -101,7 +101,7 @@ export function ScriptGenerator() {
     <div className="space-y-8">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Viral Script Generator</CardTitle>
+          <CardTitle>Stop Mikir Keras, Mulai Action Cerdas</CardTitle>
           <CardDescription>
             Masukkan link produk dan pilih preferensi Anda untuk menghasilkan
             script konten affiliate yang menarik.

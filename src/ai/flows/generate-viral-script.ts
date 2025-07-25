@@ -57,6 +57,7 @@ const GenerateViralScriptInputSchema = z.object({
     'coba gratis/demo',
     'edukasi/follow up',
     'validasi diri',
+    'random sesuai marketplace',
   ]).describe('The desired Call to Action (CTA) type for the script.'),
   outputCount: z.number().min(1).max(15).describe('The number of script options to generate.'),
 });
@@ -104,28 +105,34 @@ CTA Type: {{{ctaType}}}
 **Crucial Instruction:** The script's content MUST be readable within the specified video duration. The target video duration is exactly **{{{scriptLength}}} seconds**. Adjust the word count and pacing of the script to strictly meet this time limit. Do not generate a script that is too long or too short for a {{{scriptLength}}}-second video.
 
 **CTA Generation Logic:**
-Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns with the following goals and examples:
-- **interaksi**:
-  - **Tujuan**: Bikin audiens komen / reply / engage
-  - **Contoh**: “Kamu pernah ngalamin ini juga?”, “Setuju gak? Tulis di komen ya.”, “Coba tebak hasil akhirnya!”
-- **share/save**:
-  - **Tujuan**: Konten disimpan atau dibagikan
-  - **Contoh**: “Save dulu biar gak lupa”, “Share ke temenmu yang butuh ini”, “Nanti kamu bakal nyari konten ini lagi, trust me.”
-- **klik link**:
-  - **Tujuan**: Bawa traffic ke bio / landing page / WA
-  - **Contoh**: “Klik link di bio buat cobain sekarang”, “Aku taruh linknya di atas ya”, “Mau coba? Link ada di bio.”
-- **beli/checkout**:
-  - **Tujuan**: Bikin orang langsung ambil keputusan beli
-  - **Contoh**: “Langsung checkout sebelum habis ya”, “Gak usah mikir lama, klik beli aja”, “Yang mau langsung order, cek link-nya sekarang”
-- **coba gratis/demo**:
-  - **Tujuan**: Cocok buat kamu yang nawarin tools / digital product
-  - **Contoh**: “Coba dulu, gratis kok”, “Gak harus bayar sekarang, cobain dulu aja”, “Isi data → klik → langsung keluar caption-nya”
-- **edukasi/follow up**:
-  - **Tujuan**: Cocok buat konten soft selling atau tips
-  - **Contoh**: “Follow buat dapet tips jualan tiap hari”, “Besok aku bahas bagian kedua, stay tune ya”, “Kalau kamu suka konten kayak gini, kasih ❤️”
-- **validasi diri**:
-  - **Tujuan**: Bikin audiens ngerasa relate dan terlibat
-  - **Contoh**: “Yang pernah ngerasa gini, angkat tangan 🙋‍♂️”, “Berapa banyak dari kamu yang ngalamin ini?”, “Kalau kamu salah satunya, kamu gak sendiri”
+Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns with the following goals and examples.
+- **If '{{{ctaType}}}' is 'random sesuai marketplace'**:
+  1.  **Analyze the Product Link**: Determine the marketplace (e.g., Shopee, Tokopedia, TikTok Shop, Instagram).
+  2.  **Select a Random CTA**: Choose a random CTA type from the list below that is appropriate for the detected marketplace. For example, 'beli/checkout' is good for e-commerce, while 'interaksi' is good for Instagram.
+  3.  **Generate the CTA**: Create a CTA based on the randomly selected type. Mention the marketplace in your reasoning if it helps.
+
+- **If a specific CTA type is chosen**:
+  - **interaksi**:
+    - **Tujuan**: Bikin audiens komen / reply / engage
+    - **Contoh**: “Kamu pernah ngalamin ini juga?”, “Setuju gak? Tulis di komen ya.”, “Coba tebak hasil akhirnya!”
+  - **share/save**:
+    - **Tujuan**: Konten disimpan atau dibagikan
+    - **Contoh**: “Save dulu biar gak lupa”, “Share ke temenmu yang butuh ini”, “Nanti kamu bakal nyari konten ini lagi, trust me.”
+  - **klik link**:
+    - **Tujuan**: Bawa traffic ke bio / landing page / WA
+    - **Contoh**: “Klik link di bio buat cobain sekarang”, “Aku taruh linknya di atas ya”, “Mau coba? Link ada di bio.”
+  - **beli/checkout**:
+    - **Tujuan**: Bikin orang langsung ambil keputusan beli
+    - **Contoh**: “Langsung checkout sebelum habis ya”, “Gak usah mikir lama, klik beli aja”, “Yang mau langsung order, cek link-nya sekarang”
+  - **coba gratis/demo**:
+    - **Tujuan**: Cocok buat kamu yang nawarin tools / digital product
+    - **Contoh**: “Coba dulu, gratis kok”, “Gak harus bayar sekarang, cobain dulu aja”, “Isi data → klik → langsung keluar caption-nya”
+  - **edukasi/follow up**:
+    - **Tujuan**: Cocok buat konten soft selling atau tips
+    - **Contoh**: “Follow buat dapet tips jualan tiap hari”, “Besok aku bahas bagian kedua, stay tune ya”, “Kalau kamu suka konten kayak gini, kasih ❤️”
+  - **validasi diri**:
+    - **Tujuan**: Bikin audiens ngerasa relate dan terlibat
+    - **Contoh**: “Yang pernah ngerasa gini, angkat tangan 🙋‍♂️”, “Berapa banyak dari kamu yang ngalamin ini?”, “Kalau kamu salah satunya, kamu gak sendiri”
 
 Each script option must include relevant and powerful hashtags. All content must be tailored to the Indonesian market.
 

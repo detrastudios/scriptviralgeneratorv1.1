@@ -40,6 +40,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import { exportToDocx } from "@/lib/docx-exporter";
 import { Skeleton } from "./ui/skeleton";
 import { Slider } from "./ui/slider";
+import { RocketLoader } from "./rocket-loader";
 
 const FormSchema = z.object({
   productLink: z
@@ -144,7 +145,7 @@ Hashtag: ${option.hashtags || "-"}`;
 
   return (
     <div className="space-y-8">
-      <Card>
+      <Card className="shadow-lg">
         <CardHeader className="text-center p-8">
           <CardTitle className="text-3xl font-bold">Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
           <CardDescription className="text-base text-muted-foreground/80">
@@ -291,7 +292,7 @@ Hashtag: ${option.hashtags || "-"}`;
                   type="submit"
                   disabled={isLoading}
                   size="lg"
-                  className="w-full md:w-1/2"
+                  className="w-full md:w-1/2 shadow-lg"
                 >
                   {isLoading ? (
                     <>
@@ -311,33 +312,14 @@ Hashtag: ${option.hashtags || "-"}`;
         </CardContent>
       </Card>
 
-      {isLoading && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[...Array(outputCountValue)].map((_, i) => (
-            <Card key={i}>
-              <CardHeader>
-                <Skeleton className="h-6 w-32" />
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <Skeleton className="h-4 w-1/4" />
-                <Skeleton className="h-16 w-full" />
-                <Skeleton className="h-4 w-1/4" />
-                <Skeleton className="h-12 w-full" />
-              </CardContent>
-              <CardFooter className="gap-2">
-                <Skeleton className="h-10 w-full" />
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      )}
+      {isLoading && <RocketLoader />}
 
       {results && (
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-center">Hasil Script Ajaib Anda</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {results.scriptOptions.map((option, index) => (
-              <Card key={index} className="flex flex-col">
+              <Card key={index} className="flex flex-col shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-xl">Opsi Script {index + 1}</CardTitle>
                   <CardDescription>
@@ -381,7 +363,7 @@ Hashtag: ${option.hashtags || "-"}`;
                     <ClipboardCopy className="mr-2 h-4 w-4" />
                     Salin Semua
                   </Button>
-                  <Button onClick={() => exportToDocx(option)}>
+                  <Button onClick={() => exportToDocx(option)} className="shadow-lg">
                     <FileDown className="mr-2 h-4 w-4" />
                     Ekspor ke Word
                   </Button>

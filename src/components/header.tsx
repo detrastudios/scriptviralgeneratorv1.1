@@ -11,7 +11,12 @@ export function Header() {
           <div className="bg-primary/20 p-2 rounded-lg">
             <Sparkles className="h-6 w-6 text-primary" />
           </div>
-          <span className="font-bold text-lg">VISIG</span>
+          <div>
+            <span className="font-bold text-lg leading-none">VISIG</span>
+            <p className="text-xs text-muted-foreground leading-none mt-1">
+              Viral Script Generator
+            </p>
+          </div>
         </a>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <ThemeToggle />

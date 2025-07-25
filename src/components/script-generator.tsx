@@ -36,7 +36,7 @@ import type {
   GenerateViralScriptOutput,
   GenerateViralScriptInput,
 } from "@/ai/flows/generate-viral-script";
-import { Loader2, ClipboardCopy, FileDown } from "lucide-react";
+import { Loader2, ClipboardCopy, FileDown, Wand2 } from "lucide-react";
 import { ScrollArea } from "./ui/scroll-area";
 import { exportToDocx } from "@/lib/docx-exporter";
 import { Skeleton } from "./ui/skeleton";
@@ -99,7 +99,7 @@ export function ScriptGenerator() {
       productLink: "",
       languageStyle: "santai",
       hookType: "tidak ada",
-      ctaType: "interaksi",
+      ctaType: "random sesuai marketplace",
       scriptLength: 30,
       outputCount: 6,
     },
@@ -145,9 +145,9 @@ Hashtag: ${option.hashtags || "-"}`;
 
   return (
     <div className="space-y-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
+      <Card className="shadow-lg">
+        <CardHeader className="text-center">
+          <CardTitle className="text-3xl font-bold">Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
           <CardDescription>
             Masukkan link produk dan preferensi Anda untuk membuat konten viral.
           </CardDescription>
@@ -155,7 +155,6 @@ Hashtag: ${option.hashtags || "-"}`;
         <CardContent>
           <Form {...form}>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {/* URL Produk */}
               <FormField
                 control={control}
                 name="productLink"
@@ -170,7 +169,6 @@ Hashtag: ${option.hashtags || "-"}`;
                 )}
               />
 
-              {/* Gaya Bahasa dan Hook */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField
                   control={control}
@@ -223,7 +221,6 @@ Hashtag: ${option.hashtags || "-"}`;
                 />
               </div>
 
-              {/* CTA */}
               <FormField
                 control={control}
                 name="ctaType"
@@ -249,14 +246,13 @@ Hashtag: ${option.hashtags || "-"}`;
                 )}
               />
 
-              {/* Slider */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
                 <FormField
                   control={control}
                   name="scriptLength"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Durasi (detik)</FormLabel>
+                      <FormLabel>Durasi Video: {scriptLengthValue} detik</FormLabel>
                       <FormControl>
                         <Slider
                           min={0}
@@ -266,9 +262,6 @@ Hashtag: ${option.hashtags || "-"}`;
                           onValueChange={(v) => field.onChange(v[0])}
                         />
                       </FormControl>
-                      <FormDescription>
-                        Durasi video: {scriptLengthValue} detik.
-                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
@@ -278,7 +271,7 @@ Hashtag: ${option.hashtags || "-"}`;
                   name="outputCount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Jumlah Output</FormLabel>
+                       <FormLabel>Jumlah Opsi: {outputCountValue} script</FormLabel>
                       <FormControl>
                         <Slider
                           min={1}
@@ -288,39 +281,41 @@ Hashtag: ${option.hashtags || "-"}`;
                           onValueChange={(v) => field.onChange(v[0])}
                         />
                       </FormControl>
-                      <FormDescription>
-                        Jumlah output: {outputCountValue} script.
-                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
 
-              <Button
-                type="submit"
-                disabled={isLoading}
-                className="w-full md:w-auto bg-accent hover:bg-accent/90 text-accent-foreground"
-              >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Membuat Script...
-                  </>
-                ) : (
-                  "Buat Script"
-                )}
-              </Button>
+              <div className="flex justify-center pt-4">
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  size="lg"
+                  className="w-full md:w-1/2"
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Membuat Script...
+                    </>
+                  ) : (
+                    <>
+                      <Wand2 className="mr-2 h-4 w-4" />
+                      Buat Script Ajaib
+                    </>
+                  )}
+                </Button>
+              </div>
             </form>
           </Form>
         </CardContent>
       </Card>
 
-      {/* Loading Skeletons */}
       {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[...Array(outputCountValue)].map((_, i) => (
-            <Card key={i}>
+            <Card key={i} className="shadow-lg">
               <CardHeader>
                 <Skeleton className="h-6 w-32" />
               </CardHeader>
@@ -331,21 +326,19 @@ Hashtag: ${option.hashtags || "-"}`;
                 <Skeleton className="h-12 w-full" />
               </CardContent>
               <CardFooter className="gap-2">
-                <Skeleton className="h-10 w-24" />
-                <Skeleton className="h-10 w-24" />
+                <Skeleton className="h-10 w-full" />
               </CardFooter>
             </Card>
           ))}
         </div>
       )}
 
-      {/* Result Display */}
       {results && (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-center">Hasil Script Anda</h2>
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold text-center">Hasil Script Ajaib Anda</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {results.scriptOptions.map((option, index) => (
-              <Card key={index} className="flex flex-col">
+              <Card key={index} className="flex flex-col shadow-lg">
                 <CardHeader>
                   <CardTitle>Opsi Script {index + 1}</CardTitle>
                   <CardDescription>
@@ -384,14 +377,14 @@ Hashtag: ${option.hashtags || "-"}`;
                     </div>
                   </ScrollArea>
                 </CardContent>
-                <CardFooter className="gap-2">
+                <CardFooter className="flex-col items-stretch gap-2">
                   <Button variant="outline" onClick={() => handleCopy(option)}>
                     <ClipboardCopy className="mr-2 h-4 w-4" />
-                    Salin
+                    Salin Semua
                   </Button>
                   <Button onClick={() => exportToDocx(option)}>
                     <FileDown className="mr-2 h-4 w-4" />
-                    Ekspor
+                    Ekspor ke Word
                   </Button>
                 </CardFooter>
               </Card>

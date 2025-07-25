@@ -147,7 +147,7 @@ Hashtag: ${option.hashtags || "-"}`;
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle>Viral Script Generator</CardTitle>
+          <CardTitle>Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
           <CardDescription>
             Masukkan link produk dan preferensi Anda untuk membuat konten viral.
           </CardDescription>

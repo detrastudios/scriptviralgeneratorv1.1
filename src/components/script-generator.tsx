@@ -145,7 +145,7 @@ Hashtag: ${option.hashtags || "-"}`;
 
   return (
     <div className="space-y-8">
-      <Card className="border-white/20 bg-background/80 backdrop-blur-lg">
+      <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-bold">Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
           <CardDescription>
@@ -315,7 +315,7 @@ Hashtag: ${option.hashtags || "-"}`;
       {isLoading && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[...Array(outputCountValue)].map((_, i) => (
-            <Card key={i} className="border-white/20 bg-background/80 backdrop-blur-lg">
+            <Card key={i}>
               <CardHeader>
                 <Skeleton className="h-6 w-32" />
               </CardHeader>
@@ -338,7 +338,7 @@ Hashtag: ${option.hashtags || "-"}`;
           <h2 className="text-3xl font-bold text-center">Hasil Script Ajaib Anda</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {results.scriptOptions.map((option, index) => (
-              <Card key={index} className="flex flex-col border-white/20 bg-background/80 backdrop-blur-lg">
+              <Card key={index} className="flex flex-col">
                 <CardHeader>
                   <CardTitle>Opsi Script {index + 1}</CardTitle>
                   <CardDescription>

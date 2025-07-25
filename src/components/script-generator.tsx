@@ -144,12 +144,12 @@ export function ScriptGenerator() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="how-to">How-To / Tips</SelectItem>
                           <SelectItem value="santai">Santai</SelectItem>
-                          <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
+                          <SelectItem value="how-to">How-To / Tips</SelectItem>
                           <SelectItem value="listicle">Listicle</SelectItem>
-                          <SelectItem value="edukatif">Edukatif</SelectItem>
+                          <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
                           <SelectItem value="persuasif">Persuasif</SelectItem>
+                          <SelectItem value="edukatif">Edukatif</SelectItem>
                           <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
                           <SelectItem value="profesional">Profesional</SelectItem>
                           <SelectItem value="storyselling">Storyselling</SelectItem>
@@ -196,36 +196,35 @@ export function ScriptGenerator() {
                     )}
                   />
               </div>
-
               <FormField
-                  control={form.control}
-                  name="ctaType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Jenis CTA</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Pilih jenis CTA" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="interaksi">CTA Interaksi</SelectItem>
-                          <SelectItem value="share/save">CTA Share/Save</SelectItem>
-                          <SelectItem value="klik link">CTA Klik Link</SelectItem>
-                          <SelectItem value="beli/checkout">CTA Beli/Checkout</SelectItem>
-                          <SelectItem value="coba gratis/demo">CTA Coba Gratis/Demo</SelectItem>
-                          <SelectItem value="edukasi/follow up">CTA Edukasi/Follow Up</SelectItem>
-                          <SelectItem value="validasi diri">CTA Validasi Diri</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                control={form.control}
+                name="ctaType"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Jenis CTA</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Pilih jenis CTA" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="interaksi">CTA Interaksi</SelectItem>
+                        <SelectItem value="share/save">CTA Share/Save</SelectItem>
+                        <SelectItem value="klik link">CTA Klik Link</SelectItem>
+                        <SelectItem value="beli/checkout">CTA Beli/Checkout</SelectItem>
+                        <SelectItem value="coba gratis/demo">CTA Coba Gratis/Demo</SelectItem>
+                        <SelectItem value="edukasi/follow up">CTA Edukasi/Follow Up</SelectItem>
+                        <SelectItem value="validasi diri">CTA Validasi Diri</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField

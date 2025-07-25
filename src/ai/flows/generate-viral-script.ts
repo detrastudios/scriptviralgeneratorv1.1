@@ -57,7 +57,12 @@ export type GenerateViralScriptInput = z.infer<typeof GenerateViralScriptInputSc
 const GenerateViralScriptOutputSchema = z.object({
   scriptOptions: z.array(
     z.object({
-      script: z.string().describe('A generated marketing script option.'),
+      durasi: z.string().describe('The duration of the video script in seconds.'),
+      judul: z.string().describe('A catchy title for the video.'),
+      hook: z.string().describe('The hook to grab the viewer\'s attention.'),
+      script: z.string().describe('The main body of the script.'),
+      cta: z.string().describe('The call to action.'),
+      caption: z.string().describe('A short caption for the social media post.'),
       hashtags: z.string().describe('Relevant and powerful hashtags for the script.'),
     })
   ).describe('A variable number of script options with hashtags, based on outputCount.'),
@@ -89,7 +94,16 @@ Hook Type: {{{hookType}}}
 
 Each script option must include relevant and powerful hashtags. All content must be tailored to the Indonesian market.
 
-Ensure that the output provides exactly {{{outputCount}}} distinct script options, each with its own unique script and set of hashtags. Be creative and persuasive while strictly adhering to the time constraint.
+Generate the output in the following structured format for each option:
+- Durasi: [The specified script length in seconds]
+- Judul: [A catchy title for the video]
+- Hook: [The hook to grab the viewer's attention, based on the selected hook type]
+- Script: [The main body of the script]
+- CTA: [The call to action]
+- Caption singkat: [A short caption for the social media post]
+- Hashtag: [Relevant and powerful hashtags]
+
+Ensure that the output provides exactly {{{outputCount}}} distinct script options, each with its own unique content for every field. Be creative and persuasive while strictly adhering to the time constraint.
 `,
 });
 

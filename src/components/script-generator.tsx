@@ -32,7 +32,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { generateScriptAction } from '@/app/actions';
-import type { GenerateViralScriptOutput } from '@/ai/flows/generate-viral-script';
+import type { GenerateViralScriptOutput, GenerateViralScriptInput } from '@/ai/flows/generate-viral-script';
 import { Loader2, ClipboardCopy, FileDown } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { exportToDocx } from '@/lib/docx-exporter';
@@ -71,7 +71,7 @@ export function ScriptGenerator() {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     setIsLoading(true);
     setResults(null);
-    const { data: resultData, error } = await generateScriptAction(data);
+    const { data: resultData, error } = await generateScriptAction(data as GenerateViralScriptInput);
     setIsLoading(false);
 
     if (error || !resultData) {
@@ -85,12 +85,12 @@ export function ScriptGenerator() {
     }
   }
 
-  const handleCopy = (script: string, hashtags: string) => {
-    const textToCopy = `${script}\n\n${hashtags}`;
+  const handleCopy = (option: GenerateViralScriptOutput['scriptOptions'][0]) => {
+    const textToCopy = `Judul: ${option.judul}\n\nHook: ${option.hook}\n\nScript: ${option.script}\n\nCTA: ${option.cta}\n\nCaption singkat: ${option.caption}\n\nHashtag: ${option.hashtags}`;
     navigator.clipboard.writeText(textToCopy);
     toast({
       title: 'Berhasil Disalin!',
-      description: 'Script dan hashtag telah disalin ke clipboard.',
+      description: 'Script dan semua detailnya telah disalin ke clipboard.',
     });
   };
 
@@ -159,38 +159,38 @@ export function ScriptGenerator() {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="hookType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Jenis Hook</FormLabel>
-                       <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Pilih jenis hook" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="tidak ada">Tidak Ada</SelectItem>
-                          <SelectItem value="kontroversial">Kontroversial</SelectItem>
-                          <SelectItem value="pertanyaan retoris">Pertanyaan Retoris</SelectItem>
-                          <SelectItem value="kutipan relatable">Kutipan Relatable</SelectItem>
-                          <SelectItem value="fakta mengejutkan">Fakta Mengejutkan</SelectItem>
-                          <SelectItem value="masalah dan solusi">Masalah dan Solusi</SelectItem>
-                          <SelectItem value="before after">Before After</SelectItem>
-                          <SelectItem value="X dibanding Y">X dibanding Y</SelectItem>
-                          <SelectItem value="testimoni/review">Testimoni/Review</SelectItem>
-                          <SelectItem value="first impression/unboxing">First Impression/Unboxing</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                 <FormField
+                    control={form.control}
+                    name="hookType"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Jenis Hook</FormLabel>
+                         <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Pilih jenis hook" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="tidak ada">Tidak Ada</SelectItem>
+                            <SelectItem value="kontroversial">Kontroversial</SelectItem>
+                            <SelectItem value="pertanyaan retoris">Pertanyaan Retoris</SelectItem>
+                            <SelectItem value="kutipan relatable">Kutipan Relatable</SelectItem>
+                            <SelectItem value="fakta mengejutkan">Fakta Mengejutkan</SelectItem>
+                            <SelectItem value="masalah dan solusi">Masalah dan Solusi</SelectItem>
+                            <SelectItem value="before after">Before After</SelectItem>
+                            <SelectItem value="X dibanding Y">X dibanding Y</SelectItem>
+                            <SelectItem value="testimoni/review">Testimoni/Review</SelectItem>
+                            <SelectItem value="first impression/unboxing">First Impression/Unboxing</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -263,8 +263,18 @@ export function ScriptGenerator() {
                 <Skeleton className="h-6 w-32" />
               </CardHeader>
               <CardContent className="space-y-4">
-                <Skeleton className="h-20 w-full" />
-                <Skeleton className="h-10 w-full" />
+                 <div className="space-y-2">
+                  <Skeleton className="h-4 w-1/4" />
+                  <Skeleton className="h-4 w-full" />
+                </div>
+                 <div className="space-y-2">
+                  <Skeleton className="h-4 w-1/4" />
+                  <Skeleton className="h-10 w-full" />
+                </div>
+                 <div className="space-y-2">
+                  <Skeleton className="h-4 w-1/4" />
+                  <Skeleton className="h-16 w-full" />
+                </div>
               </CardContent>
               <CardFooter className="gap-2">
                 <Skeleton className="h-10 w-24" />
@@ -281,31 +291,53 @@ export function ScriptGenerator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {results.scriptOptions.map((option, index) => (
                 <Card key={index} className="flex flex-col">
-                <CardHeader>
-                    <CardTitle>Opsi Script {index + 1}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-1 space-y-4">
-                    <ScrollArea className="h-48 w-full rounded-md border p-4">
-                      <p className="text-sm whitespace-pre-wrap">{option.script}</p>
+                  <CardHeader>
+                      <CardTitle>Opsi Script {index + 1}</CardTitle>
+                      <CardDescription>Durasi: {option.durasi} detik</CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex-1 space-y-4">
+                    <ScrollArea className="h-80 w-full rounded-md border p-4">
+                      <div className="space-y-4 whitespace-pre-wrap text-sm">
+                        <div>
+                          <h4 className="font-semibold mb-1">Judul:</h4>
+                          <p>{option.judul}</p>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-1">Hook:</h4>
+                          <p>{option.hook}</p>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-1">Script:</h4>
+                          <p>{option.script}</p>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-1">CTA:</h4>
+                          <p>{option.cta}</p>
+                        </div>
+                         <div>
+                          <h4 className="font-semibold mb-1">Caption Singkat:</h4>
+                          <p>{option.caption}</p>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold mb-1">Hashtag:</h4>
+                          <p className="text-muted-foreground">{option.hashtags}</p>
+                        </div>
+                      </div>
                     </ScrollArea>
-                    <div>
-                        <h4 className="font-semibold mb-2">Hashtag:</h4>
-                        <p className="text-sm text-muted-foreground">{option.hashtags}</p>
-                    </div>
-                </CardContent>
-                <CardFooter className="gap-2">
-                    <Button
-                    variant="outline"
-                    onClick={() => handleCopy(option.script, option.hashtags)}
-                    >
-                    <ClipboardCopy className="mr-2 h-4 w-4" />
-                    Salin
-                    </Button>
-                    <Button onClick={() => exportToDocx(option.script, option.hashtags)}>
-                    <FileDown className="mr-2 h-4 w-4" />
-                    Ekspor
-                    </Button>
-                </CardFooter>
+                  </CardContent>
+                  <CardFooter className="gap-2">
+                      <Button
+                      variant="outline"
+                      onClick={() => handleCopy(option)}
+                      >
+                      <ClipboardCopy className="mr-2 h-4 w-4" />
+                      Salin
+                      </Button>
+                      <Button onClick={() => exportToDocx(option)}>
+                      <FileDown className="mr-2 h-4 w-4" />
+                      Ekspor
+                      </Button>
+                  </CardFooter>
                 </Card>
             ))}
             </div>

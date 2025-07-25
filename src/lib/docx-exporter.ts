@@ -2,8 +2,13 @@
 
 import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel } from 'docx';
 import { saveAs } from 'file-saver';
+import type { GenerateViralScriptOutput } from '@/ai/flows/generate-viral-script';
 
-export const exportToDocx = (script: string, hashtags: string) => {
+type ScriptOption = GenerateViralScriptOutput['scriptOptions'][0];
+
+export const exportToDocx = (option: ScriptOption) => {
+  const { judul, hook, script, cta, caption, hashtags, durasi } = option;
+
   const doc = new Document({
     creator: "Script Viral Generator",
     title: "Script Konten Affiliate",
@@ -26,6 +31,21 @@ export const exportToDocx = (script: string, hashtags: string) => {
           },
         },
         {
+          id: "Heading2",
+          name: "Heading 2",
+          basedOn: "Normal",
+          next: "Normal",
+          quickFormat: true,
+          run: {
+            size: 28, // 14pt
+            bold: true,
+            color: "4E4E4E",
+          },
+          paragraph: {
+            spacing: { before: 360, after: 120 },
+          },
+        },
+        {
           id: "Normal",
           name: "Normal",
           basedOn: "Normal",
@@ -36,7 +56,7 @@ export const exportToDocx = (script: string, hashtags: string) => {
             color: "595959",
           },
           paragraph: {
-            spacing: { line: 276, after: 200 }, // 1.15 line spacing, 10pt after
+            spacing: { line: 276, after: 160 }, // 1.15 line spacing, 8pt after
           }
         },
       ],
@@ -46,22 +66,30 @@ export const exportToDocx = (script: string, hashtags: string) => {
         properties: {},
         children: [
           new Paragraph({
-            text: "Script Konten",
+            text: `Script Konten (Durasi: ${durasi} detik)`,
             heading: HeadingLevel.HEADING_1,
           }),
+
+          new Paragraph({ text: "Judul", heading: HeadingLevel.HEADING_2 }),
+          new Paragraph({ text: judul, style: "Normal" }),
+
+          new Paragraph({ text: "Hook", heading: HeadingLevel.HEADING_2 }),
+          new Paragraph({ text: hook, style: "Normal" }),
+          
+          new Paragraph({ text: "Script", heading: HeadingLevel.HEADING_2 }),
           ...script.split('\n').filter(line => line.trim() !== '').map(line => new Paragraph({ 
             text: line,
             style: "Normal"
           })),
-          new Paragraph({
-            text: "Hashtags",
-            heading: HeadingLevel.HEADING_1,
-            spacing: { before: 480 },
-          }),
-          new Paragraph({
-            text: hashtags,
-            style: "Normal"
-          }),
+
+          new Paragraph({ text: "CTA", heading: HeadingLevel.HEADING_2 }),
+          new Paragraph({ text: cta, style: "Normal" }),
+
+          new Paragraph({ text: "Caption Singkat", heading: HeadingLevel.HEADING_2 }),
+          new Paragraph({ text: caption, style: "Normal" }),
+
+          new Paragraph({ text: "Hashtags", heading: HeadingLevel.HEADING_2 }),
+          new Paragraph({ text: hashtags, style: "Normal" }),
         ],
       },
     ],

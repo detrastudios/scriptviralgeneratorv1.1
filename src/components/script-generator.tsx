@@ -176,7 +176,7 @@ export function ScriptGenerator() {
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Pilih jenis hook" />
-                            </Trigger>
+                            </SelectTrigger>
                           </FormControl>
                           <SelectContent>
                             <SelectItem value="tidak ada">Tidak Ada</SelectItem>

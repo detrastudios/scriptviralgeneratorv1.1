@@ -63,10 +63,6 @@ export default {
           '5': 'hsl(var(--chart-5))',
         },
       },
-      fill: ({ theme }) => ({
-        primary: theme('colors.primary.DEFAULT'),
-        accent: theme('colors.accent.DEFAULT'),
-      }),
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

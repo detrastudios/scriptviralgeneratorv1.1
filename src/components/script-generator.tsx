@@ -145,11 +145,11 @@ Hashtag: ${option.hashtags || "-"}`;
 
   return (
     <div className="space-y-8">
-      <Card className="shadow-lg">
+      <Card>
         <CardHeader className="text-center p-8">
           <CardTitle className="text-3xl font-bold">Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
           <CardDescription className="text-base text-muted-foreground/80">
-            Masukkan link produk dan preferensi Anda untuk membuat konten viral.
+            Smart Tools yang akan bantu kamu lebih produktif bikin konten.
           </CardDescription>
         </CardHeader>
         <CardContent className="p-8 pt-0">
@@ -292,7 +292,7 @@ Hashtag: ${option.hashtags || "-"}`;
                   type="submit"
                   disabled={isLoading}
                   size="lg"
-                  className="w-full md:w-1/2 shadow-lg"
+                  className="w-full md:w-1/2"
                 >
                   {isLoading ? (
                     <>
@@ -319,7 +319,7 @@ Hashtag: ${option.hashtags || "-"}`;
           <h2 className="text-3xl font-bold text-center">Hasil Script Ajaib Anda</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {results.scriptOptions.map((option, index) => (
-              <Card key={index} className="flex flex-col shadow-lg">
+              <Card key={index} className="flex flex-col">
                 <CardHeader>
                   <CardTitle className="text-xl">Opsi Script {index + 1}</CardTitle>
                   <CardDescription>
@@ -363,7 +363,7 @@ Hashtag: ${option.hashtags || "-"}`;
                     <ClipboardCopy className="mr-2 h-4 w-4" />
                     Salin Semua
                   </Button>
-                  <Button onClick={() => exportToDocx(option)} className="shadow-lg">
+                  <Button onClick={() => exportToDocx(option)}>
                     <FileDown className="mr-2 h-4 w-4" />
                     Ekspor ke Word
                   </Button>

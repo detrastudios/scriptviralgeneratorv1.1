@@ -158,28 +158,6 @@ export function ScriptGenerator() {
                 />
                 <FormField
                   control={form.control}
-                  name="scriptLength"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Durasi (detik)</FormLabel>
-                       <FormControl>
-                        <Slider
-                          min={0}
-                          max={60}
-                          step={1}
-                          defaultValue={[field.value]}
-                          onValueChange={(value) => field.onChange(value[0])}
-                        />
-                      </FormControl>
-                      <FormDescription>
-                        Durasi video: {scriptLengthValue} detik.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
                   name="hookType"
                   render={({ field }) => (
                     <FormItem>
@@ -206,6 +184,28 @@ export function ScriptGenerator() {
                           <SelectItem value="first impression/unboxing">First Impression/Unboxing</SelectItem>
                         </SelectContent>
                       </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="scriptLength"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Durasi (detik)</FormLabel>
+                       <FormControl>
+                        <Slider
+                          min={0}
+                          max={60}
+                          step={1}
+                          defaultValue={[field.value]}
+                          onValueChange={(value) => field.onChange(value[0])}
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Durasi video: {scriptLengthValue} detik.
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}

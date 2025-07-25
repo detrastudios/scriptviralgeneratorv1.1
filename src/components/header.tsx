@@ -1,4 +1,4 @@
-import { Wand2 } from 'lucide-react';
+import { VisigLogo } from '@/components/visig-logo';
 import { ThemeToggle } from '@/components/theme-toggle';
 
 export function Header() {
@@ -6,8 +6,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex items-center">
-          <Wand2 className="h-6 w-6 mr-2 text-primary" />
-          <span className="text-xl font-bold">Viral Script Generator</span>
+          <VisigLogo className="h-7" />
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <ThemeToggle />

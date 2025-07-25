@@ -49,6 +49,15 @@ const GenerateViralScriptInputSchema = z.object({
       'first impression/unboxing',
     ])
     .describe('The desired hook type for the script.'),
+  ctaType: z.enum([
+    'interaksi',
+    'share/save',
+    'klik link',
+    'beli/checkout',
+    'coba gratis/demo',
+    'edukasi/follow up',
+    'validasi diri',
+  ]).describe('The desired Call to Action (CTA) type for the script.'),
   outputCount: z.number().min(1).max(15).describe('The number of script options to generate.'),
 });
 
@@ -90,8 +99,33 @@ You will generate {{{outputCount}}} different script options based on the produc
 Product Link: {{{productLink}}}
 Language Style: {{{languageStyle}}}
 Hook Type: {{{hookType}}}
+CTA Type: {{{ctaType}}}
 
 **Crucial Instruction:** The script's content MUST be readable within the specified video duration. The target video duration is exactly **{{{scriptLength}}} seconds**. Adjust the word count and pacing of the script to strictly meet this time limit. Do not generate a script that is too long or too short for a {{{scriptLength}}}-second video.
+
+**CTA Generation Logic:**
+Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns with the following goals and examples:
+- **interaksi**:
+  - **Tujuan**: Bikin audiens komen / reply / engage
+  - **Contoh**: “Kamu pernah ngalamin ini juga?”, “Setuju gak? Tulis di komen ya.”, “Coba tebak hasil akhirnya!”
+- **share/save**:
+  - **Tujuan**: Konten disimpan atau dibagikan
+  - **Contoh**: “Save dulu biar gak lupa”, “Share ke temenmu yang butuh ini”, “Nanti kamu bakal nyari konten ini lagi, trust me.”
+- **klik link**:
+  - **Tujuan**: Bawa traffic ke bio / landing page / WA
+  - **Contoh**: “Klik link di bio buat cobain sekarang”, “Aku taruh linknya di atas ya”, “Mau coba? Link ada di bio.”
+- **beli/checkout**:
+  - **Tujuan**: Bikin orang langsung ambil keputusan beli
+  - **Contoh**: “Langsung checkout sebelum habis ya”, “Gak usah mikir lama, klik beli aja”, “Yang mau langsung order, cek link-nya sekarang”
+- **coba gratis/demo**:
+  - **Tujuan**: Cocok buat kamu yang nawarin tools / digital product
+  - **Contoh**: “Coba dulu, gratis kok”, “Gak harus bayar sekarang, cobain dulu aja”, “Isi data → klik → langsung keluar caption-nya”
+- **edukasi/follow up**:
+  - **Tujuan**: Cocok buat konten soft selling atau tips
+  - **Contoh**: “Follow buat dapet tips jualan tiap hari”, “Besok aku bahas bagian kedua, stay tune ya”, “Kalau kamu suka konten kayak gini, kasih ❤️”
+- **validasi diri**:
+  - **Tujuan**: Bikin audiens ngerasa relate dan terlibat
+  - **Contoh**: “Yang pernah ngerasa gini, angkat tangan 🙋‍♂️”, “Berapa banyak dari kamu yang ngalamin ini?”, “Kalau kamu salah satunya, kamu gak sendiri”
 
 Each script option must include relevant and powerful hashtags. All content must be tailored to the Indonesian market.
 
@@ -100,7 +134,7 @@ Generate the output in the following structured format for each option:
 - Judul: [A catchy title for the video]
 - Hook: [The hook to grab the viewer's attention, based on the selected hook type]
 - Script: [The main body of the script]
-- CTA: [The call to action]
+- CTA: [The call to action, based on the selected CTA type]
 - Caption singkat: [A short caption for the social media post]
 - Hashtag: [Relevant and powerful hashtags]
 

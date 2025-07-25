@@ -89,7 +89,17 @@ export function ScriptGenerator() {
   }
 
   const handleCopy = (option: GenerateViralScriptOutput['scriptOptions'][0]) => {
-    const textToCopy = `Judul: ${option.judul}\n\nHook: ${option.hook}\n\nScript: ${option.script}\n\nCTA: ${option.cta}\n\nCaption singkat: ${option.caption}\n\nHashtag: ${option.hashtags}`;
+    const textToCopy = `Judul: ${option.judul}
+
+Hook: ${option.hook}
+
+Script: ${option.script}
+
+CTA: ${option.cta}
+
+Caption singkat: ${option.caption}
+
+Hashtag: ${option.hashtags}`;
     navigator.clipboard.writeText(textToCopy);
     toast({
       title: 'Berhasil Disalin!',

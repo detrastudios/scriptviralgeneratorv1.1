@@ -10,7 +10,7 @@ import {
 // This needs to match the schema in the AI flow and the form.
 const FormSchema = z.object({
   productLink: z.string().url({ message: 'Harap masukkan URL produk yang valid.' }).min(1, { message: 'Link produk tidak boleh kosong.' }),
-  languageStyle: z.enum(['persuasif', 'storytelling', 'profesional', 'edukatif', 'santai', 'fun/menghibur']),
+  languageStyle: z.enum(['persuasif', 'storytelling', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling']),
   scriptLength: z.enum(['pendek', 'sedang', 'panjang']),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing']),
 });

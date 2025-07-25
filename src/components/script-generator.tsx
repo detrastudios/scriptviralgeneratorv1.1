@@ -39,7 +39,7 @@ import { Skeleton } from './ui/skeleton';
 
 const FormSchema = z.object({
   productLink: z.string().url({ message: 'Harap masukkan URL produk yang valid.' }).min(1, { message: 'Link produk tidak boleh kosong.' }),
-  languageStyle: z.enum(['persuasif', 'storytelling', 'profesional', 'edukatif', 'santai', 'fun/menghibur'], {
+  languageStyle: z.enum(['persuasif', 'storytelling', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling'], {
     required_error: "Gaya bahasa harus dipilih."
   }),
   scriptLength: z.enum(['pendek', 'sedang', 'panjang'], {
@@ -141,6 +141,11 @@ export function ScriptGenerator() {
                           <SelectItem value="edukatif">Edukatif</SelectItem>
                           <SelectItem value="santai">Santai</SelectItem>
                           <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
+                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
+                          <SelectItem value="listicle">Listicle</SelectItem>
+                          <SelectItem value="how-to">How-To / Tips</SelectItem>
+                          <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
+                          <SelectItem value="storyselling">Storyselling</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />

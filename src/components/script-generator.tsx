@@ -101,7 +101,7 @@ export function ScriptGenerator() {
     <div className="space-y-8">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Stop Mikir Keras, Saatnya Action Cerdas</CardTitle>
+          <CardTitle>Stop Mikir Keras, Mulai Klik Cerdas</CardTitle>
           <CardDescription>
             Masukkan link produk dan pilih preferensi Anda untuk menghasilkan
             script konten affiliate yang menarik.
@@ -176,7 +176,7 @@ export function ScriptGenerator() {
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Pilih jenis hook" />
-                            </SelectTrigger>
+                            </Trigger>
                           </FormControl>
                           <SelectContent>
                             <SelectItem value="tidak ada">Tidak Ada</SelectItem>
@@ -210,7 +210,7 @@ export function ScriptGenerator() {
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Pilih jenis CTA" />
-                        </SelectTrigger>
+                        </Trigger>
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="interaksi">CTA Interaksi</SelectItem>

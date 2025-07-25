@@ -39,7 +39,7 @@ import { Skeleton } from './ui/skeleton';
 
 const FormSchema = z.object({
   productLink: z.string().url({ message: 'Harap masukkan URL produk yang valid.' }).min(1, { message: 'Link produk tidak boleh kosong.' }),
-  languageStyle: z.enum(['persuasif', 'storytelling', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling'], {
+  languageStyle: z.enum(['persuasif', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling', 'storytelling relate', 'storytelling halus'], {
     required_error: "Gaya bahasa harus dipilih."
   }),
   scriptLength: z.enum(['pendek', 'sedang', 'panjang'], {
@@ -136,16 +136,16 @@ export function ScriptGenerator() {
                         </FormControl>
                         <SelectContent>
                           <SelectItem value="persuasif">Persuasif</SelectItem>
-                          <SelectItem value="storytelling">Storytelling</SelectItem>
+                          <SelectItem value="storytelling relate">Storytelling → Bikin audiens relate</SelectItem>
+                          <SelectItem value="storytelling halus">Storyselling → Halus banget buat masukin jualan tanpa maksa</SelectItem>
                           <SelectItem value="profesional">Profesional</SelectItem>
                           <SelectItem value="edukatif">Edukatif</SelectItem>
                           <SelectItem value="santai">Santai</SelectItem>
                           <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
-                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
-                          <SelectItem value="listicle">Listicle</SelectItem>
-                          <SelectItem value="how-to">How-To / Tips</SelectItem>
-                          <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
-                          <SelectItem value="storyselling">Storyselling</SelectItem>
+                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata → Buat orang berhenti scroll & mikir</SelectItem>
+                          <SelectItem value="listicle">Listicle → Bikin orang gampang save & share</SelectItem>
+                          <SelectItem value="how-to">How-To / Tips → Bangun posisi kamu sebagai problem solver</SelectItem>
+                          <SelectItem value="curhatan">Curhatan / Self-Talk → Bikin orang merasa “sama nihh kaya aku"</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />

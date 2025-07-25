@@ -21,7 +21,6 @@ const GenerateViralScriptInputSchema = z.object({
     ),
   languageStyle: z.enum([
     'persuasif',
-    'storytelling',
     'profesional',
     'edukatif',
     'santai',
@@ -30,7 +29,9 @@ const GenerateViralScriptInputSchema = z.object({
     'listicle',
     'how-to',
     'curhatan',
-    'storyselling'
+    'storyselling',
+    'storytelling relate',
+    'storytelling halus'
   ]).describe('The desired language style for the script.'),
   scriptLength: z.enum(['pendek', 'sedang', 'panjang']).describe('The desired script length.'),
   hookType: z

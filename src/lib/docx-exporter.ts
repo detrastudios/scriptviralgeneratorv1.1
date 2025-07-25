@@ -10,9 +10,9 @@ export const exportToDocx = (option: ScriptOption) => {
   const { judul, hook, script, cta, caption, hashtags, durasi } = option;
 
   const doc = new Document({
-    creator: "Script Viral Generator",
+    creator: "Viral Script Generator",
     title: "Script Konten Affiliate",
-    description: "Dihasilkan oleh Script Viral Generator",
+    description: "Dihasilkan oleh Viral Script Generator",
     styles: {
       paragraphStyles: [
         {

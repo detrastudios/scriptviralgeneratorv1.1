@@ -7,7 +7,7 @@ export function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <div className="mr-4 flex items-center">
           <Wand2 className="h-6 w-6 mr-2 text-primary" />
-          <span className="font-bold">Script Viral Generator</span>
+          <span className="text-xl font-bold">Viral Script Generator</span>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <ThemeToggle />

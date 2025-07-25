@@ -10,7 +10,7 @@ export function Footer() {
             rel="noreferrer"
             className="font-medium underline underline-offset-4"
           >
-            Detra Studioos
+            Detra Studios
           </a>
           .
         </p>

@@ -64,7 +64,7 @@ export default {
         },
       },
       boxShadow: {
-        glow: '0 0 25px hsl(var(--primary) / 0.04)',
+        glow: '0 0 25px hsl(var(--primary) / 0.06)',
       },
       fill: ({ theme }) => ({
         primary: theme('colors.primary.DEFAULT'),

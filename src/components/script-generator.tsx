@@ -135,16 +135,16 @@ export function ScriptGenerator() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="persuasif">Persuasif</SelectItem>
-                          <SelectItem value="storytelling relate">Storytelling → Bikin audiens relate</SelectItem>
-                          <SelectItem value="storytelling halus">Storyselling → Halus banget buat masukin jualan tanpa maksa</SelectItem>
-                          <SelectItem value="profesional">Profesional</SelectItem>
-                          <SelectItem value="edukatif">Edukatif</SelectItem>
                           <SelectItem value="santai">Santai</SelectItem>
+                          <SelectItem value="edukatif">Edukatif</SelectItem>
+                          <SelectItem value="persuasif">Persuasif</SelectItem>
+                          <SelectItem value="profesional">Profesional</SelectItem>
                           <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
-                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata → Buat orang berhenti scroll & mikir</SelectItem>
+                          <SelectItem value="storytelling relate">Storytelling → Bikin audiens relate</SelectItem>
                           <SelectItem value="listicle">Listicle → Bikin orang gampang save & share</SelectItem>
+                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata → Buat orang berhenti scroll & mikir</SelectItem>
                           <SelectItem value="how-to">How-To / Tips → Bangun posisi kamu sebagai problem solver</SelectItem>
+                          <SelectItem value="storytelling halus">Storyselling → Halus banget buat masukin jualan tanpa maksa</SelectItem>
                           <SelectItem value="curhatan">Curhatan / Self-Talk → Bikin orang merasa “sama nihh kaya aku"</SelectItem>
                         </SelectContent>
                       </Select>

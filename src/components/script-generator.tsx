@@ -7,6 +7,7 @@ import { z } from 'zod';
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -36,15 +37,14 @@ import { Loader2, ClipboardCopy, FileDown } from 'lucide-react';
 import { ScrollArea } from './ui/scroll-area';
 import { exportToDocx } from '@/lib/docx-exporter';
 import { Skeleton } from './ui/skeleton';
+import { Slider } from './ui/slider';
 
 const FormSchema = z.object({
   productLink: z.string().url({ message: 'Harap masukkan URL produk yang valid.' }).min(1, { message: 'Link produk tidak boleh kosong.' }),
   languageStyle: z.enum(['persuasif', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling', 'storytelling relate', 'storytelling halus'], {
     required_error: "Gaya bahasa harus dipilih."
   }),
-  scriptLength: z.enum(['pendek', 'sedang', 'panjang'], {
-    required_error: "Panjang tulisan harus dipilih."
-  }),
+  scriptLength: z.number().min(0).max(60),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing'], {
     required_error: "Jenis hook harus dipilih."
   }),
@@ -59,8 +59,11 @@ export function ScriptGenerator() {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       productLink: '',
+      scriptLength: 30,
     },
   });
+
+  const scriptLengthValue = form.watch('scriptLength');
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     setIsLoading(true);
@@ -135,17 +138,18 @@ export function ScriptGenerator() {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="santai">Santai</SelectItem>
+                           <SelectItem value="santai">Santai</SelectItem>
                           <SelectItem value="edukatif">Edukatif</SelectItem>
+                          <SelectItem value="how-to">How-To / Tips</SelectItem>
+                          <SelectItem value="listicle">Listicle</SelectItem>
                           <SelectItem value="persuasif">Persuasif</SelectItem>
                           <SelectItem value="profesional">Profesional</SelectItem>
+                          <SelectItem value="curhatan">Curhatan / Self-Talk</SelectItem>
+                          <SelectItem value="storyselling">Storyselling</SelectItem>
                           <SelectItem value="fun/menghibur">Fun/Menghibur</SelectItem>
-                          <SelectItem value="storytelling relate">Storytelling → Bikin audiens relate</SelectItem>
-                          <SelectItem value="listicle">Listicle → Bikin orang gampang save & share</SelectItem>
-                          <SelectItem value="1-kalimat">1-Kalimat / 1-Kata → Buat orang berhenti scroll & mikir</SelectItem>
-                          <SelectItem value="how-to">How-To / Tips → Bangun posisi kamu sebagai problem solver</SelectItem>
-                          <SelectItem value="storytelling halus">Storyselling → Halus banget buat masukin jualan tanpa maksa</SelectItem>
-                          <SelectItem value="curhatan">Curhatan / Self-Talk → Bikin orang merasa “sama nihh kaya aku"</SelectItem>
+                           <SelectItem value="1-kalimat">1-Kalimat / 1-Kata</SelectItem>
+                          <SelectItem value="storytelling relate">Storytelling relate</SelectItem>
+                          <SelectItem value="storytelling halus">Storytelling halus</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -157,22 +161,19 @@ export function ScriptGenerator() {
                   name="scriptLength"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Panjang Tulisan</FormLabel>
-                       <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Pilih panjang tulisan" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="pendek">Pendek (&lt; 30 detik)</SelectItem>
-                          <SelectItem value="sedang">Sedang (30-60 detik)</SelectItem>
-                          <SelectItem value="panjang">Panjang (&gt; 60 detik)</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <FormLabel>Durasi (detik)</FormLabel>
+                       <FormControl>
+                        <Slider
+                          min={0}
+                          max={60}
+                          step={1}
+                          defaultValue={[field.value]}
+                          onValueChange={(value) => field.onChange(value[0])}
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Durasi video: {scriptLengthValue} detik.
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}

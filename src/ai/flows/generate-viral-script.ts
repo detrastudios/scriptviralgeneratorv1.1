@@ -33,7 +33,7 @@ const GenerateViralScriptInputSchema = z.object({
     'storytelling relate',
     'storytelling halus'
   ]).describe('The desired language style for the script.'),
-  scriptLength: z.enum(['pendek', 'sedang', 'panjang']).describe('The desired script length.'),
+  scriptLength: z.number().describe('The desired script length in seconds (0-60).'),
   hookType: z
     .enum([
       'tidak ada',
@@ -82,7 +82,7 @@ You will generate 6 different script options based on the product link and the f
 
 Product Link: {{{productLink}}}
 Language Style: {{{languageStyle}}}
-Script Length: {{{scriptLength}}}
+Script Length: Target a video duration of approximately {{{scriptLength}}} seconds.
 Hook Type: {{{hookType}}}
 
 Each script option should include relevant and powerful hashtags.  The script and hashtags should be tailored to the Indonesian market.

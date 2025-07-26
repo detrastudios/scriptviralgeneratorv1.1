@@ -59,7 +59,7 @@ const GenerateViralScriptInputSchema = z.object({
     'validasi diri',
     'random sesuai marketplace',
   ]).describe('The desired Call to Action (CTA) type for the script.'),
-  outputCount: z.number().min(1).max(15).describe('The number of script options to generate.'),
+  outputCount: z.number().min(0).max(20).describe('The number of script options to generate.'),
 });
 
 export type GenerateViralScriptInput = z.infer<typeof GenerateViralScriptInputSchema>;

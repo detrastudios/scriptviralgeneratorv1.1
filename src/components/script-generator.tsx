@@ -38,7 +38,7 @@ const FormSchema = z.object({
   scriptLength: z.number().min(0).max(60),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing']),
   ctaType: z.enum(['interaksi', 'share/save', 'klik link', 'beli/checkout', 'coba gratis/demo', 'edukasi/follow up', 'validasi diri', 'random sesuai marketplace']),
-  outputCount: z.number().min(1).max(15),
+  outputCount: z.number().min(0).max(20),
 });
 
 export function ScriptGenerator() {
@@ -198,19 +198,6 @@ export function ScriptGenerator() {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="outputCount"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Jumlah Opsi Script (1-15)</FormLabel>
-                      <FormControl>
-                        <Input type="number" min={1} max={15} {...field} onChange={e => field.onChange(parseInt(e.target.value))} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
               </div>
 
               <FormField
@@ -226,6 +213,28 @@ export function ScriptGenerator() {
                         max={60}
                         step={1}
                         onValueChange={(value) => field.onChange(value[0])}
+                        value={[field.value]}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="outputCount"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Jumlah Hasil: {field.value}</FormLabel>
+                    <FormControl>
+                      <Slider
+                        defaultValue={[3]}
+                        min={0}
+                        max={20}
+                        step={1}
+                        onValueChange={(value) => field.onChange(value[0])}
+                        value={[field.value]}
                       />
                     </FormControl>
                     <FormMessage />

@@ -254,66 +254,54 @@ export function ScriptGenerator() {
       {loading && <RocketLoader />}
 
       {results && (
-        <div className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-xl">✨ Ini Dia, Script Ajaibmu!</CardTitle>
-              <CardDescription>Pilih, salin, dan jadilah viral. Semudah itu!</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ScrollArea className="h-[600px] w-full p-1">
-                <div className="space-y-6 pr-4">
-                  {results.scriptOptions.map((option, index) => (
-                    <div key={index} className="border p-6 rounded-lg bg-background/50 shadow-md transition-all hover:shadow-glow hover:border-primary/20">
-                      <div className="flex justify-between items-start mb-4">
-                        <div>
-                          <p className="text-sm text-muted-foreground">Opsi {index + 1}</p>
-                          <h3 className="text-lg font-semibold text-primary">{option.judul}</h3>
-                          <p className="text-sm text-muted-foreground">Durasi: {option.durasi} detik</p>
-                        </div>
-                        <div className="flex gap-2">
-                           <Button
-                            variant="outline"
-                            size="icon"
-                            onClick={() => exportToDocx(option)}
-                          >
-                            <FileDown />
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="icon"
-                            onClick={() => handleCopy(option, index)}
-                            onMouseEnter={() => setHoveredIndex(index)}
-                            onMouseLeave={() => setHoveredIndex(null)}
-                            className={cn(
-                              (clickedIndex === index || hoveredIndex === index) && "animate-flash",
-                            )}
-                          >
-                            <Copy />
-                            <span className="sr-only">
-                              {clickedIndex === index || hoveredIndex === index ? "Salin Semua" : "Copy"}
-                            </span>
-                          </Button>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-4 text-sm">
-                        <div><strong className="font-semibold text-foreground/90">Hook:</strong><p className="text-muted-foreground mt-1">{option.hook}</p></div>
-                        <Separator />
-                        <div><strong className="font-semibold text-foreground/90">Script:</strong><p className="text-muted-foreground mt-1 whitespace-pre-line">{option.script}</p></div>
-                        <Separator />
-                        <div><strong className="font-semibold text-foreground/90">CTA:</strong><p className="text-muted-foreground mt-1">{option.cta}</p></div>
-                        <Separator />
-                        <div><strong className="font-semibold text-foreground/90">Caption Singkat:</strong><p className="text-muted-foreground mt-1">{option.caption}</p></div>
-                        <Separator />
-                        <div><strong className="font-semibold text-foreground/90">Hashtag:</strong><p className="text-muted-foreground mt-1">{option.hashtags}</p></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </ScrollArea>
-            </CardContent>
-          </Card>
+        <div className="space-y-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">✨ Ini Dia, Script Ajaibmu!</h2>
+            <p className="text-muted-foreground">Pilih, salin, dan jadilah viral. Semudah itu!</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+            {results.scriptOptions.map((option, index) => (
+              <Card key={index} className="flex flex-col">
+                <CardHeader>
+                  <CardTitle className="text-lg text-primary">{option.judul}</CardTitle>
+                  <CardDescription>Opsi {index + 1} • Durasi: {option.durasi} detik</CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4 text-sm">
+                  <div><strong className="font-semibold text-foreground/90">Hook:</strong><p className="text-muted-foreground mt-1">{option.hook}</p></div>
+                  <Separator />
+                  <div><strong className="font-semibold text-foreground/90">Script:</strong><p className="text-muted-foreground mt-1 whitespace-pre-line h-40 overflow-y-auto">{option.script}</p></div>
+                   <Separator />
+                  <div><strong className="font-semibold text-foreground/90">CTA:</strong><p className="text-muted-foreground mt-1">{option.cta}</p></div>
+                  <Separator />
+                  <div><strong className="font-semibold text-foreground/90">Caption:</strong><p className="text-muted-foreground mt-1">{option.caption}</p></div>
+                  <Separator />
+                  <div><strong className="font-semibold text-foreground/90">Hashtag:</strong><p className="text-muted-foreground mt-1">{option.hashtags}</p></div>
+                </CardContent>
+                <CardFooter className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full"
+                    onClick={() => exportToDocx(option)}
+                  >
+                    <FileDown className="mr-2" />
+                    Unduh
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full"
+                    onClick={() => handleCopy(option, index)}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                  >
+                    <Copy className="mr-2" />
+                    {clickedIndex === index || hoveredIndex === index ? "Berhasil Disalin!" : "Salin"}
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         </div>
       )}
     </div>

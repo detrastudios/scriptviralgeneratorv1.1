@@ -14,7 +14,7 @@ const FormSchema = z.object({
   scriptLength: z.number().min(0).max(60),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing']),
   keywords: z.string().optional(),
-  ctaType: z.enum(['interaksi', 'share/save', 'klik link', 'beli/checkout', 'coba gratis/demo', 'edukasi/follow up', 'validasi diri', 'keranjang']),
+  ctaType: z.enum(['interaksi', 'share/save', 'klik link', 'beli/checkout', 'crosscheck', 'edukasi/follow up', 'validasi diri', 'keranjang']),
   outputCount: z.number().min(0).max(20),
 });
 

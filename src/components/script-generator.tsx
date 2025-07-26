@@ -38,7 +38,7 @@ const FormSchema = z.object({
   scriptLength: z.number().min(0).max(60),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing']),
   keywords: z.string().optional(),
-  ctaType: z.enum(['interaksi', 'share/save', 'klik link', 'beli/checkout', 'coba gratis/demo', 'edukasi/follow up', 'validasi diri', 'keranjang']),
+  ctaType: z.enum(['interaksi', 'share/save', 'klik link', 'beli/checkout', 'crosscheck', 'edukasi/follow up', 'validasi diri', 'keranjang']),
   outputCount: z.number().min(0).max(20),
 });
 
@@ -205,7 +205,7 @@ export function ScriptGenerator() {
                           <SelectItem value="share/save">Share/Save</SelectItem>
                           <SelectItem value="klik link">Klik Link</SelectItem>
                           <SelectItem value="beli/checkout">Beli/Checkout</SelectItem>
-                          <SelectItem value="coba gratis/demo">Coba Gratis/Demo</SelectItem>
+                          <SelectItem value="crosscheck">Crosscheck</SelectItem>
                           <SelectItem value="edukasi/follow up">Edukasi/Follow Up</SelectItem>
                           <SelectItem value="validasi diri">Validasi Diri</SelectItem>
                           <SelectItem value="keranjang">Keranjang</SelectItem>

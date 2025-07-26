@@ -55,7 +55,7 @@ const GenerateViralScriptInputSchema = z.object({
     'share/save',
     'klik link',
     'beli/checkout',
-    'coba gratis/demo',
+    'crosscheck',
     'edukasi/follow up',
     'validasi diri',
     'keranjang',
@@ -128,9 +128,9 @@ Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns wit
   - **beli/checkout**:
     - **Tujuan**: Bikin orang langsung ambil keputusan beli
     - **Contoh**: “Langsung checkout sebelum habis ya”, “Gak usah mikir lama, klik beli aja”, “Yang mau langsung order, cek link-nya sekarang”
-  - **coba gratis/demo**:
-    - **Tujuan**: Cocok buat kamu yang nawarin tools / digital product
-    - **Contoh**: “Coba dulu, gratis kok”, “Gak harus bayar sekarang, cobain dulu aja”, “Isi data → klik → langsung keluar caption-nya”
+  - **crosscheck**:
+    - **Tujuan**: Menciptakan urgensi agar penonton segera mengecek harga di keranjang, seringkali dengan membandingkan harga yang mungkin disebutkan di video dengan harga terkini.
+    - **Contoh**: “Coba crosscheck harganya, katanya lagi diskon lho.”, “Biar yakin, cek dulu harganya di keranjang sekarang.”, “Jangan-jangan harganya udah naik besok, cek sekarang!”, "Crosscheck harga di keranjang deh, mumpung masih ada."
   - **edukasi/follow up**:
     - **Tujuan**: Cocok buat konten soft selling atau tips
     - **Contoh**: “Follow buat dapet tips jualan tiap hari”, “Besok aku bahas bagian kedua, stay tune ya”, “Kalau kamu suka konten kayak gini, kasih ❤️”

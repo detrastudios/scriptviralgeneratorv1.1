@@ -49,6 +49,7 @@ const GenerateViralScriptInputSchema = z.object({
       'first impression/unboxing',
     ])
     .describe('The desired hook type for the script.'),
+  keywords: z.string().optional().describe('Optional keywords to guide the script generation.'),
   ctaType: z.enum([
     'interaksi',
     'share/save',
@@ -101,8 +102,15 @@ Product Link: {{{productLink}}}
 Language Style: {{{languageStyle}}}
 Hook Type: {{{hookType}}}
 CTA Type: {{{ctaType}}}
+{{#if keywords}}
+Keywords: {{{keywords}}}
+{{/if}}
 
 **Crucial Instruction:** The script's content MUST be readable within the specified video duration. The target video duration is exactly **{{{scriptLength}}} seconds**. Adjust the word count and pacing of the script to strictly meet this time limit. Do not generate a script that is too long or too short for a {{{scriptLength}}}-second video.
+
+{{#if keywords}}
+**Keyword Integration:** If keywords are provided, you MUST integrate them naturally into the script content (hook, script, caption) to make it more relevant and targeted.
+{{/if}}
 
 **CTA Generation Logic:**
 Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns with the following goals and examples.

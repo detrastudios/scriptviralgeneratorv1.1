@@ -37,6 +37,7 @@ const FormSchema = z.object({
   languageStyle: z.enum(['persuasif', 'profesional', 'edukatif', 'santai', 'fun/menghibur', '1-kalimat', 'listicle', 'how-to', 'curhatan', 'storyselling', 'storytelling relate', 'storytelling halus', 'problem-agitation-solution']),
   scriptLength: z.number().min(0).max(60),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing']),
+  keywords: z.string().optional(),
   ctaType: z.enum(['interaksi', 'share/save', 'klik link', 'beli/checkout', 'coba gratis/demo', 'edukasi/follow up', 'validasi diri', 'random sesuai marketplace']),
   outputCount: z.number().min(0).max(20),
 });
@@ -46,7 +47,6 @@ export function ScriptGenerator() {
   const [results, setResults] = useState<GenerateViralScriptOutput | null>(null);
   const [loading, setLoading] = useState(false);
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -55,6 +55,7 @@ export function ScriptGenerator() {
       languageStyle: "persuasif",
       scriptLength: 30,
       hookType: "tidak ada",
+      keywords: "",
       ctaType: "random sesuai marketplace",
       outputCount: 3,
     },
@@ -198,6 +199,22 @@ export function ScriptGenerator() {
                     </FormItem>
                   )}
                 />
+                <FormField
+                  control={form.control}
+                  name="keywords"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Kata Kunci (Opsional)</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Contoh: produktivitas, diskon, efektif" {...field} />
+                      </FormControl>
+                       <FormDescription>
+                        Masukkan kata kunci yang relevan.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
 
               <FormField
@@ -297,8 +314,6 @@ export function ScriptGenerator() {
                     size="sm"
                     className={cn("w-full", clickedIndex === index && "animate-flash")}
                     onClick={() => handleCopy(option, index)}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
                   >
                     <Copy className="mr-2" />
                     {clickedIndex === index ? "Berhasil Disalin!" : "Salin"}

@@ -174,6 +174,22 @@ export function ScriptGenerator() {
                 />
                 <FormField
                   control={form.control}
+                  name="keywords"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Kata Kunci (Opsional)</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Contoh: produktivitas, diskon, efektif" {...field} />
+                      </FormControl>
+                       <FormDescription>
+                        Masukkan kata kunci yang relevan.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
                   name="ctaType"
                   render={({ field }) => (
                     <FormItem>
@@ -199,22 +215,6 @@ export function ScriptGenerator() {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="keywords"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Kata Kunci (Opsional)</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Contoh: produktivitas, diskon, efektif" {...field} />
-                      </FormControl>
-                       <FormDescription>
-                        Masukkan kata kunci yang relevan.
-                      </FormDescription>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
               </div>
 
               <FormField
@@ -222,17 +222,19 @@ export function ScriptGenerator() {
                 name="scriptLength"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Durasi Script (detik): {field.value}</FormLabel>
-                    <FormControl>
-                      <Slider
-                        defaultValue={[30]}
-                        min={0}
-                        max={60}
-                        step={1}
-                        onValueChange={(value) => field.onChange(value[0])}
-                        value={[field.value]}
-                      />
-                    </FormControl>
+                    <div className="flex items-center gap-4">
+                      <FormLabel className="min-w-[150px]">Durasi Script (detik): {field.value}</FormLabel>
+                      <FormControl>
+                        <Slider
+                          defaultValue={[30]}
+                          min={0}
+                          max={60}
+                          step={1}
+                          onValueChange={(value) => field.onChange(value[0])}
+                          value={[field.value]}
+                        />
+                      </FormControl>
+                    </div>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -243,17 +245,19 @@ export function ScriptGenerator() {
                 name="outputCount"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Jumlah Hasil: {field.value}</FormLabel>
-                    <FormControl>
-                      <Slider
-                        defaultValue={[3]}
-                        min={0}
-                        max={20}
-                        step={1}
-                        onValueChange={(value) => field.onChange(value[0])}
-                        value={[field.value]}
-                      />
-                    </FormControl>
+                     <div className="flex items-center gap-4">
+                      <FormLabel className="min-w-[150px]">Jumlah Hasil: {field.value}</FormLabel>
+                      <FormControl>
+                        <Slider
+                          defaultValue={[3]}
+                          min={0}
+                          max={20}
+                          step={1}
+                          onValueChange={(value) => field.onChange(value[0])}
+                          value={[field.value]}
+                        />
+                      </FormControl>
+                    </div>
                     <FormMessage />
                   </FormItem>
                 )}

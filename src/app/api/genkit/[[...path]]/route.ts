@@ -1,7 +1,9 @@
 
-import {createNextApiHandler} from '@genkit-ai/next';
+import { createNextRouteHandler } from '@genkit-ai/next';
 
 // Import your flows here
 import '@/ai/flows/generate-viral-script';
 
-export const {GET, POST} = createNextApiHandler();
+const handler = createNextRouteHandler();
+
+export { handler as GET, handler as POST };

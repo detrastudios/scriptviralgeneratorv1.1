@@ -216,52 +216,48 @@ export function ScriptGenerator() {
                   )}
                 />
               </div>
-
-              <FormField
-                control={form.control}
-                name="scriptLength"
-                render={({ field }) => (
-                  <FormItem>
-                    <div className="flex items-center gap-4">
-                      <FormLabel className="min-w-[150px]">Durasi Script (detik): {field.value}</FormLabel>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField
+                  control={form.control}
+                  name="scriptLength"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Durasi Script (detik): {field.value}</FormLabel>
                       <FormControl>
-                        <Slider
-                          defaultValue={[30]}
-                          min={0}
-                          max={60}
-                          step={1}
-                          onValueChange={(value) => field.onChange(value[0])}
-                          value={[field.value]}
-                        />
+                          <Slider
+                            defaultValue={[30]}
+                            min={0}
+                            max={60}
+                            step={1}
+                            onValueChange={(value) => field.onChange(value[0])}
+                            value={[field.value]}
+                          />
                       </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="outputCount"
-                render={({ field }) => (
-                  <FormItem>
-                     <div className="flex items-center gap-4">
-                      <FormLabel className="min-w-[150px]">Jumlah Hasil: {field.value}</FormLabel>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="outputCount"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Jumlah Hasil: {field.value}</FormLabel>
                       <FormControl>
-                        <Slider
-                          defaultValue={[3]}
-                          min={0}
-                          max={20}
-                          step={1}
-                          onValueChange={(value) => field.onChange(value[0])}
-                          value={[field.value]}
-                        />
+                          <Slider
+                            defaultValue={[3]}
+                            min={0}
+                            max={20}
+                            step={1}
+                            onValueChange={(value) => field.onChange(value[0])}
+                            value={[field.value]}
+                          />
                       </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </CardContent>
             <CardFooter>
               <Button type="submit" disabled={loading} className="w-full">

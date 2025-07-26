@@ -2,7 +2,7 @@
 
 import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel } from 'docx';
 import { saveAs } from 'file-saver';
-import type { GenerateViralScriptOutput } from '@/ai/flows/generate-viral-script';
+import type { GenerateViralScriptOutput } from '@/app/api/generate-viral-script';
 
 type ScriptOption = GenerateViralScriptOutput['scriptOptions'][0];
 

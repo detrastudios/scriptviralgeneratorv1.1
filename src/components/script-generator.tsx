@@ -25,7 +25,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { generateScriptAction } from "@/app/actions";
 import { RocketLoader } from "./rocket-loader";
-import { type GenerateViralScriptOutput } from "@/ai/flows/generate-viral-script";
+import { type GenerateViralScriptOutput } from "@/app/api/generate-viral-script";
 import { cn } from "@/lib/utils";
 import { exportToDocx } from "@/lib/docx-exporter";
 import { FileDown, Copy } from "lucide-react";

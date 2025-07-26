@@ -1,5 +1,5 @@
 
-// app/api/route.ts
+// app/api/genkit/[[...path]]/route.ts
 import { createNextRouteHandler } from '@genkit-ai/next';
 import '@/ai/flows/generate-viral-script';
 

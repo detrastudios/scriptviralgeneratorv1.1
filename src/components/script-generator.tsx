@@ -91,6 +91,7 @@ const FormSchema = z.object({
 export function ScriptGenerator() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [results, setResults] = React.useState<GenerateViralScriptOutput | null>(null);
+  const [copiedIndex, setCopiedIndex] = React.useState<number | null>(null);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -128,7 +129,7 @@ export function ScriptGenerator() {
     }
   };
 
-  const handleCopy = (option: GenerateViralScriptOutput["scriptOptions"][0]) => {
+  const handleCopy = (option: GenerateViralScriptOutput["scriptOptions"][0], index: number) => {
     const textToCopy = `Judul: ${option.judul || "-"}
 Hook: ${option.hook || "-"}
 Script: ${option.script || "-"}
@@ -141,6 +142,11 @@ Hashtag: ${option.hashtags || "-"}`;
       title: "Berhasil Disalin!",
       description: "Script dan semua detailnya telah disalin ke clipboard.",
     });
+
+    setCopiedIndex(index);
+    setTimeout(() => {
+      setCopiedIndex(null);
+    }, 1500);
   };
 
   return (
@@ -359,9 +365,13 @@ Hashtag: ${option.hashtags || "-"}`;
                   </ScrollArea>
                 </CardContent>
                 <CardFooter className="flex-col items-stretch gap-2">
-                  <Button variant="outline" onClick={() => handleCopy(option)}>
+                  <Button
+                    variant="outline"
+                    onClick={() => handleCopy(option, index)}
+                    className={copiedIndex === index ? "animate-flash" : ""}
+                  >
                     <ClipboardCopy className="mr-2 h-4 w-4" />
-                    Salin Semua
+                    {copiedIndex === index ? "Salin Semua" : "Copy"}
                   </Button>
                   <Button onClick={() => exportToDocx(option)}>
                     <FileDown className="mr-2 h-4 w-4" />

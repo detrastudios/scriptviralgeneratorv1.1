@@ -269,7 +269,12 @@ export function ScriptGenerator() {
                 <CardContent className="flex-1 space-y-4 text-sm">
                   <div><strong className="font-semibold text-foreground/90">Hook:</strong><p className="text-muted-foreground mt-1">{option.hook}</p></div>
                   <Separator />
-                  <div><strong className="font-semibold text-foreground/90">Script:</strong><p className="text-muted-foreground mt-1 whitespace-pre-line h-40 overflow-y-auto">{option.script}</p></div>
+                  <div className="space-y-1">
+                    <strong className="font-semibold text-foreground/90">Script:</strong>
+                    <ScrollArea className="h-40">
+                      <p className="text-muted-foreground mt-1 whitespace-pre-line pr-4">{option.script}</p>
+                    </ScrollArea>
+                  </div>
                    <Separator />
                   <div><strong className="font-semibold text-foreground/90">CTA:</strong><p className="text-muted-foreground mt-1">{option.cta}</p></div>
                   <Separator />
@@ -290,13 +295,13 @@ export function ScriptGenerator() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full"
+                    className={cn("w-full", clickedIndex === index && "animate-flash")}
                     onClick={() => handleCopy(option, index)}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                   >
                     <Copy className="mr-2" />
-                    {clickedIndex === index || hoveredIndex === index ? "Berhasil Disalin!" : "Salin"}
+                    {clickedIndex === index ? "Berhasil Disalin!" : "Salin"}
                   </Button>
                 </CardFooter>
               </Card>

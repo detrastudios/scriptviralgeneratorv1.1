@@ -1,0 +1,11 @@
+
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/api/genkit/((?!v1/\\w+/stream).*)",
+      "destination": "/api/genkit"
+    }
+  ]
+}

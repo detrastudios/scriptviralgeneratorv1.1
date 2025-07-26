@@ -1,0 +1,28 @@
+# Blueprint for deploying the Next.js app on Render.
+# See https://render.com/docs/blueprint-spec for more details.
+
+services:
+  # A Web Service for the Next.js application
+  - type: web
+    name: viral-script-generator
+    env: node
+    # Automatically update and deploy on pushes to the main branch
+    autoDeploy: true
+    # Specify the branch to deploy from
+    branch: main # Or your default branch name (e.g., master)
+    # Build and start commands
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
+    # Environment variables
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        # IMPORTANT: Set this environment variable in the Render dashboard.
+        # Do not commit your actual API key here.
+        value: ""
+      - key: NEXT_PUBLIC_SITE_URL # Optional: helps Next.js know its public URL
+        fromService:
+          type: web
+          name: viral-script-generator
+          property: url

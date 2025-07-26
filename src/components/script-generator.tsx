@@ -92,6 +92,7 @@ export function ScriptGenerator() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [results, setResults] = React.useState<GenerateViralScriptOutput | null>(null);
   const [copiedIndex, setCopiedIndex] = React.useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof FormSchema>>({
@@ -368,10 +369,12 @@ Hashtag: ${option.hashtags || "-"}`;
                   <Button
                     variant="outline"
                     onClick={() => handleCopy(option, index)}
-                    className={copiedIndex === index ? "animate-flash" : ""}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    className={copiedIndex === index || hoveredIndex === index ? "animate-flash" : ""}
                   >
                     <ClipboardCopy className="mr-2 h-4 w-4" />
-                    {copiedIndex === index ? "Salin Semua" : "Copy"}
+                    {copiedIndex === index || hoveredIndex === index ? "Salin Semua" : "Copy"}
                   </Button>
                   <Button onClick={() => exportToDocx(option)}>
                     <FileDown className="mr-2 h-4 w-4" />

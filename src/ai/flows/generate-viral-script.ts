@@ -58,7 +58,7 @@ const GenerateViralScriptInputSchema = z.object({
     'coba gratis/demo',
     'edukasi/follow up',
     'validasi diri',
-    'keranjang kuning',
+    'keranjang',
   ]).describe('The desired Call to Action (CTA) type for the script.'),
   outputCount: z.number().min(0).max(20).describe('The number of script options to generate.'),
 });
@@ -137,9 +137,9 @@ Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns wit
   - **validasi diri**:
     - **Tujuan**: Bikin audiens ngerasa relate dan terlibat
     - **Contoh**: “Yang pernah ngerasa gini, angkat tangan 🙋‍♂️”, “Berapa banyak dari kamu yang ngalamin ini?”, “Kalau kamu salah satunya, kamu gak sendiri”
-  - **keranjang kuning**:
-    - **Tujuan**: Mengarahkan audiens untuk klik keranjang kuning di pojok kiri bawah layar, yang umum di platform seperti TikTok.
-    - **Contoh**: "Produknya ada di keranjang kuning di bawah ya!", "Langsung aja klik keranjang kuning di pojok kiri bawah!", "Checkout sekarang di keranjang kuning sebelum kehabisan."
+  - **keranjang**:
+    - **Tujuan**: Mengarahkan audiens untuk klik ikon keranjang di pojok kiri bawah layar, yang umum di platform seperti TikTok, tanpa menyebutkan warna spesifik (seperti kuning atau oranye) untuk menghindari pelanggaran.
+    - **Contoh**: "Produknya ada di ikon keranjang di bawah ya!", "Langsung aja klik keranjang di pojok kiri bawah!", "Checkout sekarang di keranjang belanja sebelum kehabisan.", "Cek produknya di tautan keranjang di bawah."
 
 Each script option must include relevant and powerful hashtags. All content must be tailored to the Indonesian market.
 

@@ -35,7 +35,7 @@ import type {
   GenerateViralScriptOutput,
   GenerateViralScriptInput,
 } from "@/ai/flows/generate-viral-script";
-import { Loader2, ClipboardCopy, FileDown, Wand2 } from "lucide-react";
+import { Loader2, ClipboardCopy, FileDown } from "lucide-react";
 import { ScrollArea } from "./ui/scroll-area";
 import { exportToDocx } from "@/lib/docx-exporter";
 import { Skeleton } from "./ui/skeleton";
@@ -212,7 +212,7 @@ Hashtag: ${option.hashtags || "-"}`;
                         <FormControl>
                           <SelectTrigger>
                             <SelectValue placeholder="Pilih jenis hook" />
-                          </SelectTrigger>
+                          </Trigger>
                         </FormControl>
                         <SelectContent>
                           {FormSchema.shape.hookType.options.map((opt) => (
@@ -238,7 +238,7 @@ Hashtag: ${option.hashtags || "-"}`;
                       <FormControl>
                         <SelectTrigger>
                           <SelectValue placeholder="Pilih jenis CTA" />
-                        </SelectTrigger>
+                        </Trigger>
                       </FormControl>
                       <SelectContent>
                         {FormSchema.shape.ctaType.options.map((opt) => (
@@ -308,8 +308,7 @@ Hashtag: ${option.hashtags || "-"}`;
                     </>
                   ) : (
                     <>
-                      <Wand2 className="mr-2 h-4 w-4" />
-                      Buat Script Ajaib
+                      Buatkan Script
                     </>
                   )}
                 </Button>

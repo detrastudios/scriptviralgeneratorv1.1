@@ -58,7 +58,7 @@ const GenerateViralScriptInputSchema = z.object({
     'coba gratis/demo',
     'edukasi/follow up',
     'validasi diri',
-    'random sesuai marketplace',
+    'keranjang kuning',
   ]).describe('The desired Call to Action (CTA) type for the script.'),
   outputCount: z.number().min(0).max(20).describe('The number of script options to generate.'),
 });
@@ -114,10 +114,6 @@ Keywords: {{{keywords}}}
 
 **CTA Generation Logic:**
 Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns with the following goals and examples.
-- **If '{{{ctaType}}}' is 'random sesuai marketplace'**:
-  1.  **Analyze the Product Link**: Determine the marketplace (e.g., Shopee, Tokopedia, TikTok Shop, Instagram).
-  2.  **Select a Random CTA**: Choose a random CTA type from the list below that is appropriate for the detected marketplace. For example, 'beli/checkout' is good for e-commerce, while 'interaksi' is good for Instagram.
-  3.  **Generate the CTA**: Create a CTA based on the randomly selected type. Mention the marketplace in your reasoning if it helps.
 
 - **If a specific CTA type is chosen**:
   - **interaksi**:
@@ -141,6 +137,9 @@ Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns wit
   - **validasi diri**:
     - **Tujuan**: Bikin audiens ngerasa relate dan terlibat
     - **Contoh**: “Yang pernah ngerasa gini, angkat tangan 🙋‍♂️”, “Berapa banyak dari kamu yang ngalamin ini?”, “Kalau kamu salah satunya, kamu gak sendiri”
+  - **keranjang kuning**:
+    - **Tujuan**: Mengarahkan audiens untuk klik keranjang kuning di pojok kiri bawah layar, yang umum di platform seperti TikTok.
+    - **Contoh**: "Produknya ada di keranjang kuning di bawah ya!", "Langsung aja klik keranjang kuning di pojok kiri bawah!", "Checkout sekarang di keranjang kuning sebelum kehabisan."
 
 Each script option must include relevant and powerful hashtags. All content must be tailored to the Indonesian market.
 

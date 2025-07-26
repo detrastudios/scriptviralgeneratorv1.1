@@ -38,7 +38,7 @@ const FormSchema = z.object({
   scriptLength: z.number().min(0).max(60),
   hookType: z.enum(['tidak ada', 'kontroversial', 'pertanyaan retoris', 'kutipan relatable', 'fakta mengejutkan', 'masalah dan solusi', 'before after', 'X dibanding Y', 'testimoni/review', 'first impression/unboxing']),
   keywords: z.string().optional(),
-  ctaType: z.enum(['interaksi', 'share/save', 'klik link', 'beli/checkout', 'coba gratis/demo', 'edukasi/follow up', 'validasi diri', 'random sesuai marketplace']),
+  ctaType: z.enum(['interaksi', 'share/save', 'klik link', 'beli/checkout', 'coba gratis/demo', 'edukasi/follow up', 'validasi diri', 'keranjang kuning']),
   outputCount: z.number().min(0).max(20),
 });
 
@@ -56,7 +56,7 @@ export function ScriptGenerator() {
       scriptLength: 30,
       hookType: "tidak ada",
       keywords: "",
-      ctaType: "random sesuai marketplace",
+      ctaType: "keranjang kuning",
       outputCount: 3,
     },
   });
@@ -208,7 +208,7 @@ export function ScriptGenerator() {
                           <SelectItem value="coba gratis/demo">Coba Gratis/Demo</SelectItem>
                           <SelectItem value="edukasi/follow up">Edukasi/Follow Up</SelectItem>
                           <SelectItem value="validasi diri">Validasi Diri</SelectItem>
-                          <SelectItem value="random sesuai marketplace">Random Sesuai Marketplace</SelectItem>
+                          <SelectItem value="keranjang kuning">Keranjang Kuning</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />

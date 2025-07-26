@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -129,8 +130,12 @@ Based on the selected '{{{ctaType}}}', generate a Call to Action that aligns wit
     - **Tujuan**: Bikin orang langsung ambil keputusan beli
     - **Contoh**: “Langsung checkout sebelum habis ya”, “Gak usah mikir lama, klik beli aja”, “Yang mau langsung order, cek link-nya sekarang”
   - **crosscheck**:
-    - **Tujuan**: Menciptakan urgensi agar penonton segera mengecek harga di keranjang, seringkali dengan membandingkan harga yang mungkin disebutkan di video dengan harga terkini.
-    - **Contoh**: “Coba crosscheck harganya, katanya lagi diskon lho.”, “Biar yakin, cek dulu harganya di keranjang sekarang.”, “Jangan-jangan harganya udah naik besok, cek sekarang!”, "Crosscheck harga di keranjang deh, mumpung masih ada."
+    - **Tujuan**: Menciptakan urgensi agar penonton segera mengecek harga di keranjang. Gunakan pendekatan halus yang memancing rasa penasaran atau FOMO (fear of missing out). HINDARI penggunaan kata "crosscheck" secara langsung.
+    - **Contoh Variasi**: 
+      - "Waktu itu aku beli harganya RpXX.XXX, coba deh kamu cek di keranjang kiri bawah, dapat harga berapa sekarang."
+      - "Katanya sih lagi ada harga spesial, tapi cuma buat yang beruntung. Coba iseng cek keranjang, siapa tahu kamu salah satunya."
+      - "Jangan percaya sama harga yang aku sebutin, coba buktiin sendiri di keranjang sekarang. Siap-siap kaget."
+      - "Harganya bisa berubah kapan aja lho. Mumpung inget, coba deh cek sekarang juga!"
   - **edukasi/follow up**:
     - **Tujuan**: Cocok buat konten soft selling atau tips
     - **Contoh**: “Follow buat dapet tips jualan tiap hari”, “Besok aku bahas bagian kedua, stay tune ya”, “Kalau kamu suka konten kayak gini, kasih ❤️”
